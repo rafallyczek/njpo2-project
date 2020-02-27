@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookrepo</title>
+    <link rel="stylesheet" type="text/css" href="/books.css">
+</head>
+<body>
+
+    <div class="header">
+        <h1>BOOKREPO</h1>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li><a href="/">Strona główna</a></li>
+            <li><a href="/books">Książki</a></li>
+        </ul>
+    </div>
+
+    <div class="contentHeader"><h2>Strona główna</h2></div>
+
+    <div class="container">
+        <div class="columnNames">
+            <div class="book">#</div>
+            <div class="book">Tytuł</div>
+            <div class="book">Autor</div>
+            <div class="book">Gatunek</div>
+            <div class="book">Wydanie</div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="result" th:each="book : ${books}">
+            <div class="book" th:text="${book.id}"></div>
+            <div class="book" th:text="${book.title}"></div>
+            <div class="book" th:text="${book.author}"></div>
+            <div class="book" th:text="${book.genre}"></div>
+            <div class="book" th:text="${book.release}"></div>
+            <div style="clear: both"></div>
+        </div>
+    </div>
+
+</body>
+</html>
