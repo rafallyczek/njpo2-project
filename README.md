@@ -1,2 +1,2 @@
-# njpo2-project
+# Bookrepo
 Spring application for storing data about books.
