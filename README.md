@@ -2,7 +2,7 @@
 
 Spring application for storing data about books.
 
-##Technologies
+## Technologies
 
 * Spring
 * Spring Boot
