@@ -21,10 +21,17 @@ public class BookController {
     private BookRepository bookRepository;
     private FileHandler fileHandler;
 
+    //Wstrzykiwanie BookRepository i FileHandler
     @Autowired
     public BookController(BookRepository bookRepository, FileHandler fileHandler){
         this.bookRepository = bookRepository;
         this.fileHandler = fileHandler;
+    }
+
+    //Dodaj do modelu obiekt Book
+    @ModelAttribute(name = "book")
+    public Book book(){
+        return new Book();
     }
 
     //Pobierz książki
@@ -33,7 +40,6 @@ public class BookController {
         List<Book> books = new ArrayList<>();
         bookRepository.findAll().forEach(books::add);
         model.addAttribute("books",books);
-        model.addAttribute("book",new Book());
         return "books";
     }
 
