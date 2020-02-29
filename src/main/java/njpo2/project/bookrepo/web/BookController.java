@@ -6,9 +6,11 @@ import njpo2.project.bookrepo.file.FileHandler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,7 +39,10 @@ public class BookController {
 
     //Dodaj książkę
     @PostMapping("/add")
-    public String addBook(@ModelAttribute Book book){
+    public String addBook(@ModelAttribute @Valid Book book, Errors errors){
+        if(errors.hasErrors()){
+            return "books";
+        }
         bookRepository.save(book);
         return "redirect:/books";
     }
