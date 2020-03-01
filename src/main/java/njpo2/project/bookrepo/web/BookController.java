@@ -3,6 +3,7 @@ package njpo2.project.bookrepo.web;
 import njpo2.project.bookrepo.book.Book;
 import njpo2.project.bookrepo.data.BookRepository;
 import njpo2.project.bookrepo.file.FileHandler;
+import njpo2.project.bookrepo.thread.BookThread;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -55,10 +56,15 @@ public class BookController {
 
     //Dodaj książki z pliku
     @PostMapping
-    public String addBooksFromFile(@RequestParam("file") MultipartFile file){
+    public String addBooksFromFile(@RequestParam("file") MultipartFile file) throws InterruptedException {
         List<Book> books = fileHandler.convertToBookList(fileHandler.readFromFile(file));
-        for(Book book : books){
-            bookRepository.save(book);
+        Thread [] threads = new Thread[books.size()];
+        for(int i = 0;i<books.size();i++){
+            threads[i] = new Thread(new BookThread(books.get(i),bookRepository,"Wątek "+(i+1)));
+        }
+        for(int i = 0;i<books.size();i++){
+            threads[i].start();
+            threads[i].join();
         }
         return "redirect:/books";
     }

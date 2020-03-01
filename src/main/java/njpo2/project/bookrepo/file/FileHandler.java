@@ -35,7 +35,9 @@ public class FileHandler {
             InputStream inputStream = file.getInputStream();
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             while((line=bufferedReader.readLine())!=null){
-                result.add(line);
+                if(!line.isEmpty() && !line.matches("^\\s*$")){
+                    result.add(line);
+                }
             }
         }catch (IOException e){
             System.err.println(e.getMessage());
