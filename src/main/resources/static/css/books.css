@@ -1,0 +1,167 @@
+body{
+    background-color: white;
+    margin: 0;
+}
+.header{
+    width: 100%;
+    background-color: white;
+    padding: 5px;
+}
+.menu{
+    width: 1200px;
+    background-color: #a3692e;
+    margin: 0 auto 0 auto;
+}
+.contentHeader{
+    width: 1200px;
+    background-color: #f5ebe0;
+    margin: 0 auto 5px auto;
+}
+ul{
+    list-style-type: none;
+    padding: 0;
+    font-size: 0;
+}
+ul > li{
+    list-style-type: none;
+    display: inline-block;
+    text-align: center;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 20px;
+}
+ul > li:hover{
+    background-color: #f5ebe0;
+}
+ul > li:hover a{
+    color: #a3692e;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+.container{
+    width: 1200px;
+    background-color: darkgray;
+    margin-left: auto;
+    margin-right: auto;
+    padding-bottom: 5px;
+}
+.result{
+    background-color: darkgray;
+    padding: 5px 5px 0 5px;
+}
+.columnNames{
+    background-color: darkgray;
+    padding: 5px;
+    border-bottom: 1px solid white;
+}
+#add{
+    background-color: darkgray;
+    padding: 10px 5px 5px 10px;
+}
+#addForm{
+    background-color: darkgray;
+    padding: 5px 5px 5px 10px;
+    display: none;
+}
+#addFile{
+    background-color: darkgray;
+    padding: 5px 5px 5px 10px;
+    display: none;
+    position: relative;
+}
+#formBack{
+    margin-top: 5px;
+}
+#fileBack{
+    margin-top: 5px;
+}
+.formInputs > label, .formInputs > input{
+    display: block;
+}
+.formInputs{
+    float: left;
+    margin: 0 5px 5px 0;
+}
+.errors{
+    margin: 0 5px 5px 0;
+}
+h1{
+    text-align: center;
+    color: #a3692e;
+    margin: 0;
+    padding: 5px 0;
+}
+h2{
+    text-align: center;
+    margin: 0;
+    padding: 5px 0;
+}
+h3{
+    margin: 5px 0 10px 0;
+    text-align: center;
+}
+#add > h3{
+    margin-top: 0;
+}
+.form{
+    float: left;
+}
+.info{
+    float: left;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+    border: 1px solid #808080;
+    border-radius: 5px;
+    width: 48px;
+    height: 48px;
+    background-color: #a6ccf2;
+    cursor: pointer;
+}
+.infoBox{
+    float: left;
+    position: absolute;
+    right: 50px;
+    top: 90px;
+    border: 1px solid #808080;
+    border-radius: 5px;
+    background-color: #E0E0E0;
+    padding: 5px;
+    display: none;
+}
+div.info:hover + div.infoBox{
+    display: block;
+}
+p{
+    margin: 0;
+}
+.book{
+    padding: 5px;
+    margin: 5px;
+    background-color: #909090;
+    float: left;
+}
+.book:first-child{
+    width: 45px;
+    margin-right: 0;
+    border-right: 1px solid white;
+}
+.book:nth-child(2){
+    width: 350px;
+    margin-left: 0;
+}
+.book:nth-child(3){
+    width: 300px;
+}
+.book:nth-child(4){
+    width: 300px;
+}
+.book:nth-child(5){
+    width: 100px;
+}
+.validationError{
+    color: red;
+    display: block;
+}

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bookrepo</title>
+    <link rel="stylesheet" type="text/css" href="/css/books.css">
+    <link rel="stylesheet" type="text/css" href="/css/fontello/css/fontello.css">
+    <script type="text/javascript" src="/webjars/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>BOOKREPO</h1>
+    </div>
+
+    <div class="menu">
+        <ul>
+            <li><a href="/">Strona główna</a></li>
+            <li><a href="/books">Książki</a></li>
+        </ul>
+    </div>
+
+    <div class="contentHeader"><h2>Książki</h2></div>
+
+    <div class="container">
+        <div class="columnNames">
+            <div class="book">#</div>
+            <div class="book">Tytuł</div>
+            <div class="book">Autor</div>
+            <div class="book">Gatunek</div>
+            <div class="book">Rok wydania</div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="result" th:each="book,i : ${books}" th:style="${i.last}?'padding: 5px; border-bottom: 1px solid white;'">
+            <div class="book" th:text="${i.index+1}"></div>
+            <div class="book" th:text="${book.title}"></div>
+            <div class="book" th:text="${book.author}"></div>
+            <div class="book" th:text="${book.genre}"></div>
+            <div class="book" th:text="${book.release}"></div>
+            <div style="clear: both"></div>
+        </div>
+        <div id="add">
+            <h3>Dodaj książki</h3>
+            <button id="file">Wczytaj z pliku</button>
+            <button id="form">Dodaj z formularza</button>
+        </div>
+        <div id="addFile">
+            <h3>Wczytaj książki z pliku</h3>
+            <div class="form">
+                <form method="POST" th:action="@{/books}" enctype="multipart/form-data">
+                    <input type="file" name="file">
+                    <input type="submit" value="Wczytaj">
+                    <input type="reset" value="Resetuj">
+                </form>
+            </div>
+            <div class="info"><i class="icon-info"></i></div>
+            <div class="infoBox">
+                <p>Dane w pliku powinny być zapisane wg. następującego formatu:
+                    <br/><br/><b>Tytuł;Autor;Gatunek;Rok</b>
+                    <br/><br/>Na przykład:
+                    <br/><br/><b>Krótka historia czasu;Stephen Hawking;Literatura popularnonaukowa;2015<br/>Diuna;Frank Herbert;Fantastyka;1985</b>
+                </p>
+            </div>
+            <div style="clear: both"></div>
+            <button id="fileBack">Wróć</button>
+        </div>
+        <div id="addForm">
+            <h3>Dodaj książkę</h3>
+            <form method="POST" th:action="@{/books/add}" th:object="${book}">
+                <div class="formInputs">
+                    <label for="title">Tytuł</label>
+                    <input id="title" type="text" th:field="*{title}" th:style="${#fields.hasErrors('title')}?'border-color: red;'">
+                </div>
+                <div class="formInputs">
+                    <label for="author">Autor</label>
+                    <input id="author" type="text" th:field="*{author}" th:style="${#fields.hasErrors('author')}?'border-color: red;'">
+                </div>
+                <div class="formInputs">
+                    <label for="genre">Gatunek</label>
+                    <input id="genre" type="text" th:field="*{genre}" th:style="${#fields.hasErrors('genre')}?'border-color: red;'">
+                </div>
+                <div class="formInputs">
+                    <label for="release">Rok wydania</label>
+                    <input id="release" type="text" th:field="*{release}" th:style="${#fields.hasErrors('release')}?'border-color: red;'">
+                </div>
+                <div style="clear: both"></div>
+                <div class="errors">
+                    <span class="validationError" th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+                    <span class="validationError" th:if="${#fields.hasErrors('author')}" th:errors="*{author}"></span>
+                    <span class="validationError" th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+                    <span class="validationError" th:if="${#fields.hasErrors('release')}" th:errors="*{release}"></span>
+                </div>
+                <input type="submit" value="Dodaj">
+                <input type="reset" value="Resetuj">
+                <!--Jeśli któreś pole zawiera błędy wyświetl ponownie formularz-->
+                <script th:if="${#fields.hasAnyErrors()}">
+                    $("#add").css("display","none");
+                    $("#addForm").css("display","block");
+                </script>
+            </form>
+            <button id="formBack">Wróć</button>
+        </div>
+    </div>
+    <script type="text/javascript" src="/js/books.js"></script>
+</body>
+</html>
