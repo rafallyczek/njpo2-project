@@ -17,4 +17,4 @@ Spring application for storing data about books.
 
 ## Features
 
-* Adding book's data using form or uploading data from file
+* Adding book informations using form or uploading data from file
