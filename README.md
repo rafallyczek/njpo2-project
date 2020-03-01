@@ -9,3 +9,12 @@ Spring application for storing data about books.
 * Spring Data JPA
 * Thymeleaf
 * jQuery
+
+## Other
+
+* H2 Database
+* Fontello fonts
+
+## Features
+
+* Adding book's data using form or uploading data from file
