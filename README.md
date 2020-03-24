@@ -1,6 +1,3 @@
-# Klasa zawierająca kod wątku znajduje się w lokalizacji: /src/main/java/njpo2/project/bookrepo/thread/BookThread.java
-# Wątek został wykorzystany w klasie: /src/main/java/njpo2/project/bookrepo/web/BookController.java ( metoda addBooksFromFile() )
-
 # Bookrepo
 
 Spring application for storing data about books.
