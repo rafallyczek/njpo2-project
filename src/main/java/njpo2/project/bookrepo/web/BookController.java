@@ -57,11 +57,15 @@ public class BookController {
     //Dodaj książki z pliku
     @PostMapping
     public String addBooksFromFile(@RequestParam("file") MultipartFile file) throws InterruptedException {
+        //Pobranie listy książek z pliku
         List<Book> books = fileHandler.convertToBookList(fileHandler.readFromFile(file));
+        //Utworzenie tablicy wątków
         Thread [] threads = new Thread[books.size()];
+        //Dodawanie wątków do tablicy
         for(int i = 0;i<books.size();i++){
             threads[i] = new Thread(new BookThread(books.get(i),bookRepository,"Wątek "+(i+1)));
         }
+        //Uruchomienie wątków
         for(int i = 0;i<books.size();i++){
             threads[i].start();
             threads[i].join();
