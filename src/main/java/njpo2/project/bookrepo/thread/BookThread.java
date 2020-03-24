@@ -14,6 +14,7 @@ public class BookThread extends Thread {
         this.bookRepository = bookRepository;
     }
 
+    //Dodawanie książek do bazy danych
     @Override
     public void run() {
         System.out.println("Wątek: "+getName()+" wpisuje do bazy...");
